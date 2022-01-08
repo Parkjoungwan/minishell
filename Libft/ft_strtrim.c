@@ -6,13 +6,13 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 16:58:47 by joupark           #+#    #+#             */
-/*   Updated: 2021/01/01 12:01:13 by joupark          ###   ########.fr       */
+/*   Updated: 2022/01/05 14:43:34 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_start(const char *s1, const char *set)
+int	ft_start(const char *s1, const char *set)
 {
 	size_t	s1_len;
 	size_t	i;
@@ -28,7 +28,7 @@ int		ft_start(const char *s1, const char *set)
 	return (i);
 }
 
-int		ft_end(const char *s1, const char *set)
+int	ft_end(const char *s1, const char *set)
 {
 	size_t	s1_len;
 	size_t	i;

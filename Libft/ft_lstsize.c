@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:37:05 by joupark           #+#    #+#             */
-/*   Updated: 2021/01/04 14:28:37 by joupark          ###   ########.fr       */
+/*   Updated: 2022/01/05 10:37:21 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	int result;
+	int	result;
 
 	result = 0;
 	while (lst)

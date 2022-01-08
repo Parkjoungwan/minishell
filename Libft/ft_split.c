@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 11:22:13 by joupark           #+#    #+#             */
-/*   Updated: 2021/01/03 13:09:33 by joupark          ###   ########.fr       */
+/*   Updated: 2022/01/05 14:43:51 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static	size_t	ft_num_strs(char const *s, char c)
 			result++;
 			while (s[i] && s[i] == c)
 				i++;
-			continue;
+			continue ;
 		}
 		i++;
 	}
@@ -71,7 +71,14 @@ static	void	ft_num_str(char **str, size_t *str_len, char c)
 	}
 }
 
-char			**ft_split(char const *s, char c)
+static void	ft_spinit(size_t *i, size_t *temp_len)
+{
+	*i = 0;
+	*temp_len = 0;
+	return ;
+}
+
+char	**ft_split(char const *s, char c)
 {
 	char	**result;
 	char	*temp_str;
@@ -79,18 +86,19 @@ char			**ft_split(char const *s, char c)
 	size_t	num_strs;
 	size_t	i;
 
+	ft_spinit(&i, &temp_len);
+	num_strs = ft_num_strs(s, c);
+	temp_str = (char *)s;
 	if (!s)
 		return (NULL);
-	num_strs = ft_num_strs(s, c);
-	if (!(result = malloc(sizeof(char *) * (num_strs + 1))))
+	result = malloc(sizeof(char *) * (num_strs + 1));
+	if (!result)
 		return (NULL);
-	temp_str = (char *)s;
-	temp_len = 0;
-	i = 0;
 	while (i < num_strs)
 	{
 		ft_num_str(&temp_str, &temp_len, c);
-		if (!(result[i] = malloc(sizeof(char) * (temp_len + 1))))
+		result[i] = malloc(sizeof(char) * (temp_len + 1));
+		if (!result[i])
 			return (ft_free_all(result));
 		ft_strlcpy(result[i], temp_str, temp_len + 1);
 		i++;

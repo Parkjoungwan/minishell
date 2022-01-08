@@ -1,12 +1,24 @@
-void    ft_strsfree(char **str)
-{
-    size_t i;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strsfree.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/05 10:52:03 by joupark           #+#    #+#             */
+/*   Updated: 2022/01/05 11:02:17 by joupark          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-    i = 0;
-    if (str != NULL && *str != NULL)
-    {
-        while (str[i])
-            free(str[i++]);
-        free(str);
-    }
+void	ft_strsfree(char **str)
+{
+	size_t	i;
+
+	i = 0;
+	if (str != NULL && *str != NULL)
+	{
+		while (str[i])
+			free(str[i++]);
+		free(str);
+	}
 }

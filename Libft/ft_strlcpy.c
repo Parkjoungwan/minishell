@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 15:27:02 by joupark           #+#    #+#             */
-/*   Updated: 2021/01/04 14:21:02 by joupark          ###   ########.fr       */
+/*   Updated: 2022/01/05 10:50:34 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
 {
-	size_t src_len;
-	size_t i;
+	size_t	src_len;
+	size_t	i;
 
 	if (!dest || !src)
 		return (0);

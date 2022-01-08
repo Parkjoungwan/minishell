@@ -6,13 +6,13 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 21:07:32 by joupark           #+#    #+#             */
-/*   Updated: 2020/12/27 19:45:33 by joupark          ###   ########.fr       */
+/*   Updated: 2022/01/05 10:49:47 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strchr(const char *src, int c)
+char	*ft_strchr(const char *src, int c)
 {
 	char	temp_c;
 	char	*temp_src;

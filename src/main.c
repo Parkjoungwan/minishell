@@ -5,76 +5,53 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/17 14:10:43 by joupark           #+#    #+#             */
-/*   Updated: 2021/12/17 17:02:57 by joupark          ###   ########.fr       */
+/*   Created: 2022/01/05 10:07:15 by joupark           #+#    #+#             */
+/*   Updated: 2022/01/05 16:33:51 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/minishell.h"
+#include "../includes/minishell.h"
 
-void	ms_init_shell(t_list **head, t_list **lsthead, char *input, char *prt)
+/* 환경변수 체크완료 21.1.5
+void	ft_envcheck(t_list **envhead)
+{
+	t_list *temp;
+
+	temp = *envhead;
+	while (temp)
+	{
+		printf("%s ", ((t_env *)temp->content)->name);
+		printf("= %s\n", ((t_env *)temp->content)->val);
+		temp = temp->next;
+	}
+}*/
+
+void	ft_init_shell(t_list **head, t_list **lsthead, char *input, char *prom)
 {
 	while (1)
 	{
-		prt = ms_getprompt(*head);
-		define_input_signals();
-		input = readline(prt);
-		if (!input)
-		{
-			free(prt);
-			ms_exit(head, lsthead);
-		}
-		free(prt);
-		if (!ft_strlen(input))
-		{
-			free(input);
-			continue ;
-		}
-		add_history(input);
-		scan_input(input, head, lsthead);
-		if (!ms_read_arguments(lsthead, 0, 0))
-			ms_execute(head, lsthead);
-		else
-			ms_c_error(head, "syntax ", " error", 2);
+		prom = ft_make_prompt(*head);
+		ft_sigdefine();
+		input = readline(prom);
 	}
 }
 
-void	ms_welcome(void)
+int	main(void)
 {
-	int		fd;
-	char	*str;
+	t_list	**envhead;
+	t_list	**lsthead;
+	extern	char	**environ;
 
-
-	fd = open("src/.welcom.txt", O_RDONLY, 0600);
-	str = NULL;
-	if (fd < 0)
-		return ;
-	while (get_next_line(fd, &str) > 0)
-	{
-		printf("%s\n", str);
-		free(str);
-	}
-	if (str)
-		free(str);
-	close (fd);
-	return ;
-}
-
-int main(void)
-{
-	t_list	**ehead;
-	t_list **lsthead;
-	extern char	**environ;
-
-	ehead = malloc(sizeof(t_list *));
+	envhead = malloc(sizeof(t_list *));
 	lsthead = malloc(sizeof(t_list *));
-	if (!lstead || !ehead)
+	if (!lsthead || !envhead)
 		return (1);
-	*ehead = NULL;
+	*envhead = NULL;
 	*lsthead = NULL;
-	ms_welcome();
-	ms_init_env(ehead, environ);
-	ms_putenv(ehead, "?", "0");
-	ms_init_shell(ehead, lsthead, NULL, NULL);
+	if (ft_envset(envhead, environ))
+		return (1);
+	ft_init_shell(envhead, lsthead, NULL, NULL);
+	//ft_envcheck(envhead);
+	//환경변수 체크완료 21.1.5
 	return (0);
 }

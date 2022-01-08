@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:31:30 by joupark           #+#    #+#             */
-/*   Updated: 2021/01/04 14:31:34 by joupark          ###   ########.fr       */
+/*   Updated: 2022/01/05 11:04:25 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
@@ -46,7 +46,7 @@ void				*ft_memccpy(void *s1, const void *s2, int c, size_t n);
 int					ft_isprint(int c);
 void				ft_putendl_fd(char const *s, int fd);
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
-		void (*del)(void *));
+						void (*del)(void *));
 int					ft_lstsize(t_list *lst);
 int					ft_toupper(int c);
 char				**ft_split(char const *s, char c);

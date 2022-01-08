@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 14:32:26 by joupark           #+#    #+#             */
-/*   Updated: 2021/01/05 01:36:57 by joupark          ###   ########.fr       */
+/*   Updated: 2022/01/05 10:38:19 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*ft_memccpy(void *s1, const void *s2, int c, size_t n)
 	{
 		*(src1 + i) = *(src2 + i);
 		if (*(src2 + i) == (unsigned char)c)
-			return (void *)(src1 + (i + 1));
+			return ((void *)(src1 + (i + 1)));
 		i++;
 	}
 	return (0);

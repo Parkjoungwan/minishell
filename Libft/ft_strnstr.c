@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 22:26:34 by joupark           #+#    #+#             */
-/*   Updated: 2020/12/29 20:40:34 by joupark          ###   ########.fr       */
+/*   Updated: 2022/01/05 10:51:20 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strnstr(const char *s1, const char *s2, size_t len)
 {
-	size_t len2;
+	size_t	len2;
 
 	if (*s2 == '\0')
 		return ((char *)s1);

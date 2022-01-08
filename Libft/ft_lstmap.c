@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:12:03 by joupark           #+#    #+#             */
-/*   Updated: 2021/01/06 08:08:04 by joupark          ###   ########.fr       */
+/*   Updated: 2022/01/05 10:36:28 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (lst == NULL || f == NULL || del == NULL)
 		return (NULL);
-	if ((result = ft_lstnew(f(lst->content))) == NULL)
+	result = ft_lstnew(f(lst->content));
+	if (!result)
 		return (NULL);
 	cur = result;
 	lst = lst->next;
 	while (lst)
 	{
-		if ((temp_next = ft_lstnew(f(lst->content))) == NULL)
+		temp_next = ft_lstnew(f(lst->content));
+		if (!temp_next)
 		{
 			ft_lstclear(&result, del);
 			return (NULL);

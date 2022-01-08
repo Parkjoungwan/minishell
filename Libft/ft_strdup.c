@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 00:02:13 by joupark           #+#    #+#             */
-/*   Updated: 2021/01/01 12:22:50 by joupark          ###   ########.fr       */
+/*   Updated: 2022/01/05 10:50:05 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ char	*ft_strdup(const char *s)
 	int		size;
 
 	size = ft_strlen(s);
-	if (!(new = malloc(sizeof(char) * (size + 1))))
+	new = malloc(sizeof(char) * (size + 1));
+	if (!new)
 		return (NULL);
 	i = 0;
 	while (s[i])

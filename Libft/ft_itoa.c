@@ -6,13 +6,13 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 11:52:37 by joupark           #+#    #+#             */
-/*   Updated: 2021/01/03 13:05:58 by joupark          ###   ########.fr       */
+/*   Updated: 2022/01/05 10:30:52 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int		ft_numlen(int n)
+static	int	ft_numlen(int n)
 {
 	int	result;
 
@@ -57,13 +57,14 @@ static	void	ft_fillstr(int n, int i, char *result)
 	}
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*result;
 	int		i;
 
 	i = ft_numlen(n);
-	if (!(result = malloc(sizeof(char) * (i + 1))))
+	result = malloc(sizeof(char) * (i + 1));
+	if (!result)
 		return (NULL);
 	result[i--] = '\0';
 	ft_fillstr(n, i, result);
