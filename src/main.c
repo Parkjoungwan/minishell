@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 10:07:15 by joupark           #+#    #+#             */
-/*   Updated: 2022/01/05 16:33:51 by joupark          ###   ########.fr       */
+/*   Updated: 2022/01/12 14:29:27 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,32 @@ void	ft_envcheck(t_list **envhead)
 	}
 }*/
 
-void	ft_init_shell(t_list **head, t_list **lsthead, char *input, char *prom)
+void	ft_init_shell(t_list **envhead, t_list **lsthead, char *input, char *prom)
 {
 	while (1)
 	{
-		prom = ft_make_prompt(*head);
+		prom = ft_make_prompt(*envhead);
 		ft_sigdefine();
+		//input 체크완료 21.1.11
 		input = readline(prom);
+		if (!input)
+		{
+			free(prom);
+			ft_exit(envhead, lsthead);
+		}
+		free(prom);
+		if (!ft_strlen(input))
+		{
+			free(input);
+			continue;
+		}
+		add_history(input);
+		ft_inputscan(input, envhead, lsthead);
+		//inputsacn 코드 작성 21.1.12
+		if (!ft_argumentscheck(lsthead, 0, 0))
+			ft_execute(envhead, lsthead);
+		else
+			ft_c_error(envhead, "syntax ", " error", 2);
 	}
 }
 
