@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 00:58:06 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/05 02:03:58 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/07 11:44:44 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,18 @@ void	ft_export_err(t_list **envhead, char *token)
 	free(front);
 }
 
-int	ft_builtin_export(t_list **envhead, t_split *content)
+int	ft_builtin_export(t_list **envhead, t_split *cmdinfo)
 {
 	char	**new;
 	int		i;
 
 	i = 1;
 	ft_print_error(envhead, NULL, 0);
-	while (ft_strlen(content->tokens[i]))
+	while (ft_strlen(cmdinfo->tokens[i]))
 	{
-		if (ft_hasequal(content->tokens[i]))
+		if (ft_hasequal(cmdinfo->tokens[i]))
 		{
-			new = ft_envsplit(data->tokens[i]);
+			new = ft_envsplit(cmdinfo->tokens[i]);
 			if (new[0] && new[1])
 			{
 				new[1] = ft_trimmer(new[1]);
@@ -96,7 +96,7 @@ int	ft_builtin_export(t_list **envhead, t_split *content)
 			}
 		}
 		else
-			ft_export_err(envhead, content->tokens[i]);
+			ft_export_err(envhead, cmdinfo->tokens[i]);
 		i++;
 	}
 	if (i == 1)
