@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 14:28:37 by joupark           #+#    #+#             */
-/*   Updated: 2022/01/30 19:50:16 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/07 11:02:10 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,25 @@ void	ft_delentry(void *lst)
 
 void	ft_delcmd(void *lst)
 {
-	t_split	*content;
+	t_split	*cmdinfo;
 	int		i;
 
 	i = 0;
-	content = (t_split *)lst;
-	if (!content)
+	cmdinfo = (t_split *)lst;
+	if (!cmdinfo)
 		return ;
-	while (content->tokens[i])
+	while (cmdinfo->tokens[i])
 	{
-		free(content->tokens[i]);
+		free(cmdinfo->tokens[i]);
 		i++;
 	}
-	if (content->tokens)
-		free(content->tokens);
-	if (content->iname)
-		free(content->iname);
-	if (content->oname)
-		free(content->oname);
-	free(content);
+	if (cmdinfo->tokens)
+		free(cmdinfo->tokens);
+	if (cmdinfo->iname)
+		free(cmdinfo->iname);
+	if (cmdinfo->oname)
+		free(cmdinfo->oname);
+	free(cmdinfo);
 }
 
 void	ft_lstfree(t_list **env, int flag)
@@ -77,16 +77,16 @@ void	ft_exit(t_list **env, t_list ** lst)
 	exit(num);
 }
 
-void	ft_exit_cmd(t_list **envhead, t_list **lst, t_split *data)
+void	ft_exit_cmd(t_list **envhead, t_list **lst, t_split *cmdinfo)
 {
 	int i;
 	int n;
 
 	i = 0;
 	n = 0;
-	while (data->tokens[i])
+	while (cmdinfo->tokens[i])
 	{
-		if (ft_atoi(data->tokens[i]))
+		if (ft_atoi(cmdinfo->tokens[i]))
 			n++;
 		i++;
 	}
@@ -97,6 +97,6 @@ void	ft_exit_cmd(t_list **envhead, t_list **lst, t_split *data)
 		return ;
 	}
 	if (i > 1)
-		ft_print_error(envhead, NULL, ft_atoi(data->tokens[1]));
+		ft_print_error(envhead, NULL, ft_atoi(cmdinfo->tokens[1]));
 	ft_exit(envhead, lst);
 }

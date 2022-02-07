@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 10:59:54 by joupark           #+#    #+#             */
-/*   Updated: 2022/01/13 11:05:08 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/07 11:01:12 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 void	ft_delcmd(void	*lst)
 {
-	t_split	*content;
+	t_split	*cmdinfo;
 	int		i;
 
 	i = 0;
-	content = (t_split *)(lst);
-	if (!content)
+	cmdinfo = (t_split *)(lst);
+	if (!cmdinfo)
 		return ;
-	while (content->tokens[i])
+	while (cmdinfo->tokens[i])
 	{
-		free(content->tokens[i]);
+		free(cmdinfo->tokens[i]);
 		i++;
 	}
-	if (content->tokens)
-		free(content->tokens);
-	if (content->iname)
-		free(content->iname);
-	if (content->oname)
-		free(content->oname);
-	free(content);
+	if (cmdinfo->tokens)
+		free(cmdinfo->tokens);
+	if (cmdinfo->iname)
+		free(cmdinfo->iname);
+	if (cmdinfo->oname)
+		free(cmdinfo->oname);
+	free(cmdinfo);
 }
 
 void	ft_delone_entry(t_list **head)

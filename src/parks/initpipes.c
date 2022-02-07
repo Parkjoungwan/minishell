@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 11:22:54 by joupark           #+#    #+#             */
-/*   Updated: 2022/01/18 11:40:48 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/07 10:41:02 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int			ft_initpipes(t_list **lsthead)
 	int		size;
 	int		i;
 	int		*fd;
-	t_split	*content;
+	t_split	*cmdinfo;
 	t_list	*run;
 	
 	size = ft_lstsize(*lsthead);
@@ -38,10 +38,10 @@ int			ft_initpipes(t_list **lsthead)
 	run = *lsthead;
 	while (i < size)
 	{
-		content = (t_split *)(run->content);
-		content->piped = size - 1;
-		content->pipenbr = i;
-		content->pipefd = fd;
+		cmdinfo = (t_split *)(run->content);
+		cmdinfo->piped = size - 1;
+		cmdinfo->pipenbr = i;
+		cmdinfo->pipefd = fd;
 		if (ft_pipecheck(i, fd, size))
 			return (2);
 		i++;

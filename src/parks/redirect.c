@@ -6,24 +6,24 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 11:57:36 by joupark           #+#    #+#             */
-/*   Updated: 2022/01/25 12:05:17 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/07 10:52:55 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	ft_inputcon(t_list **envhaed, t_split *ptr)
+static int	ft_inputcon(t_list **envhaed, t_split *cmdinfo)
 {
 	int	fd;
 
-	fd = open(ptr->iname, O_RDONLY, 0644);
+	fd = open(cmdinfo->iname, O_RDONLY, 0644);
 	if (fd == -1)
 	{
-		ft_print_error(envhead, ptr->iname, -1);
+		ft_print_error(envhead, cmdinfo->iname, -1);
 		return (1);
 	}
-	ptr->fdin = dup(STDIN_FILENO);
+	cmdinfo->fdin = dup(STDIN_FILENO);
 	if (dup2(fd, STDIN_FILENO) == -1)
 		ft_printf_error(envhead, "dup2", -1);
-	if (ptr->fdin == -1)
+	if (cmdinfo->fdin == -1)
 	{
 		ft_print_error(envhead, "dup", -1);
 		return (2);
@@ -31,24 +31,24 @@ static int	ft_inputcon(t_list **envhaed, t_split *ptr)
 	return (0);
 }
 
-static int	ft_outputcon(t_list **envhead, t_split *ptr)
+static int	ft_outputcon(t_list **envhead, t_split *cmdinfo)
 {
 	int fd;
 
 	fd = 0;
-	if (ptr->redo == 1)
-		fd = open(ptr->oname, O_WRONLY | O_TRUNC | O_CREAT, 0644);
-	else if (ptr->appo == 1)
-		fd = open(ptr->oname, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	if (cmdinfo->redo == 1)
+		fd = open(cmdinfo->oname, O_WRONLY | O_TRUNC | O_CREAT, 0644);
+	else if (cmdinfo->appo == 1)
+		fd = open(cmdinfo->oname, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	if (fd == -1)
 	{
-		ft_print_error(envhead, ptr->oname, -1);
+		ft_print_error(envhead, cmdinfo->oname, -1);
 		return (1);
 	}
-	ptr->fdout = dup(STDOUT_FILENO);
+	cmdinfo->fdout = dup(STDOUT_FILENO);
 	if (dup2(fd, STDOUT_FILENO) == -1)
 		ft_print_error(envhead, "dup2", -1);
-	if (ptr->fdout == -1)
+	if (cmdinfo->fdout == -1)
 	{
 		ft_print_error(envhead, "dup", -1);
 		return (2);
@@ -56,39 +56,39 @@ static int	ft_outputcon(t_list **envhead, t_split *ptr)
 	return (0);
 }
 
-int	ft_close_redirect(t_split *con)
+int	ft_close_redirect(t_split *cmdinfo)
 {
 	int err;
 
 	err = 0;
-	if (con->fdin > 0)
+	if (cmdinfo->fdin > 0)
 	{
-		err = dup2(con->fdin, STDIN_FILENO);
-		close(con->fdin);
+		err = dup2(cmdinfo->fdin, STDIN_FILENO);
+		close(cmdinfo->fdin);
 	}
-	if (con->fdout > 0)
+	if (cmdinfo->fdout > 0)
 	{
-		err = err | dup2(con->fdout, STDIN_FILENO);
-		close(con->fdout);
+		err = err | dup2(cmdinfo->fdout, STDIN_FILENO);
+		close(cmdinfo->fdout);
 	}
-	if (con->fdhere > 0)
+	if (cmdinfo->fdhere > 0)
 	{
-		err = err | dup2(con->fdhere, STDIN_FILENO);
-		close(con->fdhere);
+		err = err | dup2(cmdinfo->fdhere, STDIN_FILENO);
+		close(cmdinfo->fdhere);
 	}
 	return (err);
 }
 
-int			ft_redirect(t_list **envhead, t_split *content)
+int			ft_redirect(t_list **envhead, t_split *cmdinfo)
 {
 	int	err;
 
 	err = 0;
-	if (content->redi)
-		err = ft_inputcon(envhead, content);
-	if (!err && content->appi)
-		ft_doc_input(envhead, content);
-	if (!err && (content->redo || content->appo))
-		err = err | ft_outputcon(head, content);
+	if (cmdinfo->redi)
+		err = ft_inputcon(envhead, cmdinfo);
+	if (!err && cmdinfo->appi)
+		ft_doc_input(envhead, cmdinfo);
+	if (!err && (cmdinfo->redo || cmdinfo->appo))
+		err = err | ft_outputcon(head, cmdinfo);
 	return (err);
 }

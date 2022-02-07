@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 10:15:34 by joupark           #+#    #+#             */
-/*   Updated: 2022/01/24 11:28:27 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/07 11:02:56 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	expand_here(char *str)
 	return (0);
 }
 
-static int	get_and_write_input(t_list **envhead, t_split *ctt, int tmp_fd)
+static int	get_and_write_input(t_list **envhead, t_split *cmdinfo, int tmp_fd)
 {
 	char	*input;
 
@@ -46,8 +46,8 @@ static int	get_and_write_input(t_list **envhead, t_split *ctt, int tmp_fd)
 	{
 		input = readline("> ");
 		if (!input)
-			ft_exit_here(tmp_fd, ctt->iname);
-		if (ft_strncmp(input, ctt->iname, ft_strlen(input) + 1))
+			ft_exit_here(tmp_fd, cmdinfo->iname);
+		if (ft_strncmp(input, cmdinfo->iname, ft_strlen(input) + 1))
 		{
 			while (expand_here(input))
 				exp_var(&input, 0, envhead);
@@ -74,21 +74,21 @@ static void	restores_stdin_and_closes(void)
 	close(tmp_fd);
 }
 
-void		ft_doc_input(t_list **envhead, t_split *ctt)
+void		ft_doc_input(t_list **envhead, t_split *cmdinfo)
 {
 	int	tmp_fd;
 	int	pid;
 	int	status;
 
 	tmp_fd = create_temporary_file();
-	ctt->fdhere = dup(STDIN_FILENO);
+	cmdinfo->fdhere = dup(STDIN_FILENO);
 	if (tmp_fd == -1)
 		return ;
 	signal(SIGINT, SIG_IGN);
 	pid = fork();
 	if (pid == 0)
 	{
-		get_and_write_input(envhead, ctt, tmp_fd);
+		get_and_write_input(envhead, cmdinfo, tmp_fd);
 		close(tmp_fd);
 	}
 	waitpid(pid, &status, 0);
