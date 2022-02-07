@@ -85,13 +85,12 @@ int	ft_getenvnbr(t_list **envhead)
 
 int	ft_envset(t_list **envhead, char **envs)
 {
-	int err_check;
-	int i;
-
+	int	err_check;
+	int	i;
 
 	err_check = 0;
 	i = 0;
-	while (envs && envs[i])
+	while (!err_check && envs && envs[i])
 	{
 		err_check = ft_env_addlist(envhead, envs[i]);
 		i++;

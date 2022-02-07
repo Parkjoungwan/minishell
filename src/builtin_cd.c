@@ -23,7 +23,7 @@ int	ft_update_dir(t_list **envhead)
 	err = ft_putenv(envhead, "OLDPWD", ft_getenv(*envhead, "PWD"));
 	if (err = 0) // 바꿔치기했다면
 	{
-		new = getcwd(NULL, 0) // 현재 작업 디렉
+		new = getcwd(NULL, 0); // 현재 작업 디렉
 		err = ft_putenv(envhead, "PWD", new);
 		free(new);
 	}
@@ -33,7 +33,7 @@ int	ft_update_dir(t_list **envhead)
 char	*check_tilde(t_list **envhead, char *str)
 {
 	if (str[0] == '~') //원본코드는 strlen 중복, HOME이 없을 경우까지 고려
-		return (ft_strjoin(ft_getenv(*head, "HOME"), str[1]));
+		return (ft_strjoin(ft_getenv(*envhead, "HOME"), str[1]));
 	return (ft_strdup(str));
 }
 

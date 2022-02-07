@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/minishell.h"
+
 static char	*cleanup(char *input)
 {
 

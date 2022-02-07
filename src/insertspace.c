@@ -26,7 +26,7 @@ static int	ft_isoperator(char *str)
 	}
 	if (!(ft_strncmp(str, ">", 1)) || !(ft_strncmp(str, "<", 1)))
 	{
-		if (ft_isalnum(*(value + 1)))
+		if (ft_isalnum(*(str + 1)))
 			return (1);
 	}
 	return (0);
@@ -43,10 +43,10 @@ static char *ft_makenewline(char *line, char *curr, int operator_size, int offse
 	temp[0] = ft_substr(line, 0, offset);
 	temp[1] = ft_substr(curr, 0, operator_size);
 	temp[2] = ft_strdup(curr + operator_size);
-	temp[3] = ft_strjoin(help[0], " ");
-	temp[4] = ft_strjoin(help[3], help[1]);
-	temp[5] = ft_strjoin(help[4], " ");
-	result = ft_strjoin(help[5], help[2]);
+	temp[3] = ft_strjoin(temp[0], " ");
+	temp[4] = ft_strjoin(temp[3], temp[1]);
+	temp[5] = ft_strjoin(temp[4], " ");
+	result = ft_strjoin(temp[5], temp[2]);
 	i = 0;
 	while (i < 6)
 	{

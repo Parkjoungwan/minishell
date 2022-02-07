@@ -28,23 +28,23 @@ static int	ft_tokensnum(char **matrix, int i)
 	return (num);
 }
 
-static void	ft_cpytokens(char **matrix, char **new, int i, int n)
+static void	ft_cpytokens(char **matrix, char **tokens, int i, int num)
 {
 	int j;
 
 	j = 0;
-	if (!new)
+	if (!tokens)
 		return ;
-	while (j < n && matrix[i + j])
+	while (j < num && matrix[i + j])
 	{
 		if (matrix[i + j][0] == '\"')
-			new[j] = ft_strtrim(matrix[i + j], "\"");
+			tokens[j] = ft_strtrim(matrix[i + j], "\"");
 		else
-			new[j] = ft_strtrim(matrix[i + j], "\'");
+			tokens[j] = ft_strtrim(matrix[i + j], "\'");
 		free(matrix[i + j]);
 		j++;
 	}
-	new[j] = NULL;
+	tokens[j] = NULL;
 }
 
 void		ft_makecmdlst(char **matrix, t_list **lsthead)
@@ -54,7 +54,7 @@ void		ft_makecmdlst(char **matrix, t_list **lsthead)
 	int		num;
 
 	i = 0;
-	while (matrix && matrix[i])
+	while (matrix && matrix[i]) //누수체크
 	{
 		num = ft_tokensnum(matrix, i);
 		if (num)

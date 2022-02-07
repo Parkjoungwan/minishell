@@ -88,7 +88,7 @@ void	 ft_expand_env(char **matrix, t_list **envhead)
 	{
 		if (ft_expandcheck(matrix, i))
 		{
-			n = 0;
+			cnt = 0;
 			find = matrix[i];
 			while (find && *find)
 			{

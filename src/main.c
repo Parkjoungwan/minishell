@@ -12,27 +12,12 @@
 
 #include "../includes/minishell.h"
 
-/* 환경변수 체크완료 21.1.5
-void	ft_envcheck(t_list **envhead)
-{
-	t_list *temp;
-
-	temp = *envhead;
-	while (temp)
-	{
-		printf("%s ", ((t_env *)temp->content)->name);
-		printf("= %s\n", ((t_env *)temp->content)->val);
-		temp = temp->next;
-	}
-}*/
-
 void	ft_init_shell(t_list **envhead, t_list **lsthead, char *input, char *prom)
 {
 	while (1)
 	{
 		prom = ft_make_prompt(*envhead);
 		ft_sigdefine();
-		//input 체크완료 21.1.11
 		input = readline(prom);
 		if (!input)
 		{
@@ -47,7 +32,6 @@ void	ft_init_shell(t_list **envhead, t_list **lsthead, char *input, char *prom)
 		}
 		add_history(input);
 		ft_inputscan(input, envhead, lsthead);
-		//inputsacn 코드 작성 21.1.12
 		if (!ft_argumentscheck(lsthead, 0, 0))
 			ft_execute(envhead, lsthead);
 		else
@@ -57,9 +41,9 @@ void	ft_init_shell(t_list **envhead, t_list **lsthead, char *input, char *prom)
 
 int	main(void)
 {
-	t_list	**envhead;
-	t_list	**lsthead;
-	extern	char	**environ;
+	t_list		**envhead;
+	t_list		**lsthead;
+	extern char	**environ;
 
 	envhead = malloc(sizeof(t_list *));
 	lsthead = malloc(sizeof(t_list *));
@@ -70,7 +54,5 @@ int	main(void)
 	if (ft_envset(envhead, environ))
 		return (1);
 	ft_init_shell(envhead, lsthead, NULL, NULL);
-	//ft_envcheck(envhead);
-	//환경변수 체크완료 21.1.5
 	return (0);
 }

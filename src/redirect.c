@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	ft_inputcon(t_list **envhaed, t_split *cmdinfo)
+#include "../includes/minishell.h"
+
+static int	ft_inputcon(t_list **envhead, t_split *cmdinfo)
 {
 	int	fd;
 
@@ -89,6 +91,6 @@ int			ft_redirect(t_list **envhead, t_split *cmdinfo)
 	if (!err && cmdinfo->appi)
 		ft_doc_input(envhead, cmdinfo);
 	if (!err && (cmdinfo->redo || cmdinfo->appo))
-		err = err | ft_outputcon(head, cmdinfo);
+		err = err | ft_outputcon(envhead, cmdinfo);
 	return (err);
 }

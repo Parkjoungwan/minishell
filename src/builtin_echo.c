@@ -37,7 +37,7 @@ static int	ft_echo_print(char *str, int flag)
 	}
 }
 
-void		ft_builtin_echo(t_list **envehead, t_split *cmdinfo)
+void		ft_builtin_echo(t_list **envhead, t_split *cmdinfo)
 {
 	int i;
 	int flag;

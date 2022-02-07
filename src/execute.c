@@ -57,7 +57,7 @@ static int	ft_builtin(t_split *cmdinfo, t_list **envhead, t_list **lsthead)
 	len = ft_strlen(cmdinfo->tokens[0]);
 	blt = ft_checkbuilt(cmdinfo, len);
 	if (blt)
-		return (built_exec(cmdinfo, head, len, lsthead));
+		return (built_exec(cmdinfo, envhead, len, lsthead));
 	else if (!blt && len)
 		ft_run_cmd(envhead, cmdinfo);
 	return (0);

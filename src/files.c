@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#includes "../includes/minishell.h"
+#include "../includes/minishell.h"
 
 static char	*ft_make_pname(char *name, char *path)
 {

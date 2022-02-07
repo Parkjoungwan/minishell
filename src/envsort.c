@@ -21,7 +21,7 @@ static int	ft_compare(char *one, char *two)
 	{
 		if (one[i] > two[i])
 			return (1);
-		else if (one[i] < two[i]])
+		else if (one[i] < two[i])
 			return (0);
 		else if (one[i] == two[i])
 			i++;
@@ -72,6 +72,6 @@ t_env	**ft_envsort(t_list **envhead)
 		lst = lst->next;
 	}
 	result[i] = NULL;
-	ft_bubble(result, ft_getenvnbr(envehad));
+	ft_bubble(result, ft_getenvnbr(envhead));
 	return (result);
 }

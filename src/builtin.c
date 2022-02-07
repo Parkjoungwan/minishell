@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../incldues/minishell.h"
+
 static int fork_or_not(t_split *cmdinfo, int len)
 {
 	if (!cmdinfo->piped)

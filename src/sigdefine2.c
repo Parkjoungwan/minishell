@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin_pwd.c                                      :+:      :+:    :+:   */
+/*   sigdefine2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/07 11:43:13 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/07 11:43:45 by joupark          ###   ########.fr       */
+/*   Created: 2022/02/07 12:33:42 by joupark           #+#    #+#             */
+/*   Updated: 2022/02/07 12:34:40 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	builtin_pwd(t_list **envhead)
+void	interrupt_here_document(int signal)
 {
-	char	*str;
-
-	str = ft_getenv(*envhead, "PWD");
-	if (str)
-		printf("%s\n", str);
-	ft_print_error(envhead, NULL, 0);
+	(void)signal;
+	write(1, "\n", 1);
+	exit(errno);
 }

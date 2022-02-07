@@ -42,7 +42,7 @@ static int	get_and_write_input(t_list **envhead, t_split *cmdinfo, int tmp_fd)
 	char	*input;
 
 	signal(SIGINT, interrupt_here_document);
-	while (head)
+	while (envhead)
 	{
 		input = readline("> ");
 		if (!input)

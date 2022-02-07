@@ -49,12 +49,12 @@ void	close_one_pipe(t_split *cmdinfo)
 	in = cmdinfo->pipenbr * 2;
 	if (!cmdinfo->pipenbr)
 		close(cmdinfo->pipefd[1]);
-	else if (cmdinfo->pipenbr > 0 && data->pipenbr != data->piped)
+	else if (cmdinfo->pipenbr > 0 && cmdinfo->pipenbr != cmdinfo->piped)
 	{
 		close(cmdinfo->pipefd[in + 1]);
 		close(cmdinfo->pipefd[in - 2]);
 	}
-	else if (cmdinfo->pipenbr == data->piped)
+	else if (cmdinfo->pipenbr == cmdinfo->piped)
 	{
 		close(cmdinfo->pipefd[in - 2]);
 		free(cmdinfo->pipefd);
@@ -88,9 +88,9 @@ void	ft_pipe_exec(char *name, t_list **envhead, t_split *cmdinfo)
 	else
 	{
 		in = cmdinfo->pipenbr * 2;
-		if (!cmdinfo->redo && !data->appo && data->pipenbr != data->piped)
+		if (!cmdinfo->redo && !cmdinfo->appo && cmdinfo->pipenbr != cmdinfo->piped)
 			dup2(cmdinfo->pipefd[in + 1], STDOUT_FILENO);
-		if (!cmdinfo->redi && !data->appi && data->pipenbr > 0)
+		if (!cmdinfo->redi && !cmdinfo->appi && cmdinfo->pipenbr > 0)
 			dup2(cmdinfo->pipefd[in - 2], STDIN_FILENO);
 		err = execve(name, get_argv(cmdinfo, name), ft_exportenv(envhead));
 		close_pipes(cmdinfo);

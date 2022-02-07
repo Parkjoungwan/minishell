@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell0"
+#include "../includes/minishell.h"
 
-static void	ft_sortting(char **tok, int size)
+static void	ft_sortting(char **tokens, int size)
 {
 	int i;
 	int j;
@@ -20,16 +20,16 @@ static void	ft_sortting(char **tok, int size)
 	i = 0;
 	while (i < size)
 	{
-		if (!tok[i])
+		if (!tokens[i])
 		{
 			j = i + 1;
 			while (j < size)
 			{
-				if (tok[j])
+				if (tokens[j])
 				{
-					tok[i] = ft_strdup(tok[j]);
-					free(tok[j]);
-					tok[j] = NULL;
+					tokens[i] = ft_strdup(tokens[j]);
+					free(tokens[j]);
+					tokens[j] = NULL;
 					break ;
 				}
 				j++;
@@ -87,6 +87,7 @@ int		ft_argumentscheck(t_list **lsthead, int i, int size)
 		if (i < 0)
 		{
 			ft_synerror(lsthead);
+			//리턴값 중2병 빼기.
 			return (666);
 		}
 		lst = lst->next;

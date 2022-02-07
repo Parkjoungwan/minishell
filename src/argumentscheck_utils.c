@@ -10,18 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell0"
+#include "../includes/minishell.h"
 
 static int ft_set_input(t_split *cmdinfo, int i, int flag)
 {
+	//리턴값 중2병 뺄 것
 	if (!cmdinfo->tokens[i + 1])
 		return (-666);
+	//appi, redi 이런거 좀 바로 알수 있게 구조체 수정할 것.
 	if (flag)
 		cmdinfo->appi = 1;
 	else
 		cmdinfo->redi = 1;
 	if (!cmdinfo->iname)
-		cmdinfo->iname = ft_strdup(content->tokens[i + 1]);
+		cmdinfo->iname = ft_strdup(cmdinfo->tokens[i + 1]);
 	free(cmdinfo->tokens[i]);
 	free(cmdinfo->tokens[i + 1]);
 	cmdinfo->tokens[i] = NULL;
@@ -38,7 +40,7 @@ static int	ft_set_output(t_split *cmdinfo, int i, int flag)
 	else
 		cmdinfo->redo = 1;
 	if (!cmdinfo->oname)
-		cmdinfo->oname = ft_strdup(content->tokens[i + 1]);
+		cmdinfo->oname = ft_strdup(cmdinfo->tokens[i + 1]);
 	free(cmdinfo->tokens[i]);
 	free(cmdinfo->tokens[i + 1]);
 	cmdinfo->tokens[i] = NULL;

@@ -21,6 +21,10 @@
 # include <fcntl.h>
 # include <pthread.h>
 # include <signal.h>
+# include <errno.h>
+# include <unistd.h>
+# include <sys/types.h>
+# include <sys/stat.h>
 
 typedef struct s_env
 {

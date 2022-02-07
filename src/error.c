@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/minishell.h"
+#include "../includes/minishell.h"
 
 int	ft_print_error(t_list **envhead, const char *str, int nbr)
 {

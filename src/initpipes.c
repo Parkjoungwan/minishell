@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incldues/minishell.h"
+#include "../includes/minishell.h"
 
 static int	ft_pipecheck(int i, int *fd, int size)
 {
