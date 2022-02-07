@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 11:13:45 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/05 10:30:10 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/07 10:52:50 by khee-seo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,14 +88,15 @@ int	ft_envset(t_list **envhead, char **envs)
 	int err_check;
 	int i;
 
+
 	err_check = 0;
 	i = 0;
-	while (!err_check && envs && envs[i])
+	while (envs && envs[i])
 	{
 		err_check = ft_env_addlist(envhead, envs[i]);
 		i++;
 	}
-	if (!envs || !i)
+	if (i < 1)
 		err_check = 1;
 	return (err_check);
 }

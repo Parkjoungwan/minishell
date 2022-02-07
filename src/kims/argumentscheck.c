@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 10:32:17 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/03 15:57:59 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/07 11:03:53 by khee-seo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,22 @@ static int	ft_getsize(char **str)
 int		ft_argumentscheck(t_list **lsthead, int i, int size)
 {
 	t_list	*lst;
-	t_split	*content;
+	t_split	*cmdinfo;
 
 	lst = *lsthead;
 	while (lst)
 	{
 		i = 0;
-		content = (t_split *)(lst->content);
-		size = ft_getsize(content->tokens);
+		cmdinfo = (t_split *)(lst->content);
+		size = ft_getsize(cmdinfo->tokens);
 		while (i < size && i >= 0)
 		{
-			i = ft_checktoken_input(content, i);
+			i = ft_checktoken_input(cmdinfo, i);
 			if (i >= 0)
-				i = ft_checktoken_output(content, i);
+				i = ft_checktoken_output(cmdinfo, i);
 			i++;
 		}
-		ft_sortting(content->tokens, size);
+		ft_sortting(cmdinfo->tokens, size);
 		if (i < 0)
 		{
 			ft_synerror(lsthead);

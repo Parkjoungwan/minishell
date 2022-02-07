@@ -6,76 +6,76 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 11:06:52 by joupark           #+#    #+#             */
-/*   Updated: 2022/01/13 11:35:58 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/07 11:04:51 by khee-seo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell0"
 
-static int ft_set_input(t_split *content, int i, int flag)
+static int ft_set_input(t_split *cmdinfo, int i, int flag)
 {
-	if (!content->tokens[i + 1])
+	if (!cmdinfo->tokens[i + 1])
 		return (-666);
 	if (flag)
-		content->appi = 1;
+		cmdinfo->appi = 1;
 	else
-		content->redi = 1;
-	if (!content->iname)
-		content->iname = ft_strdup(content->tokens[i + 1]);
-	free(content->tokens[i]);
-	free(content->tokens[i + 1]);
-	content->tokens[i] = NULL;
-	content->tokens[i + 1] = NULL;
+		cmdinfo->redi = 1;
+	if (!cmdinfo->iname)
+		cmdinfo->iname = ft_strdup(content->tokens[i + 1]);
+	free(cmdinfo->tokens[i]);
+	free(cmdinfo->tokens[i + 1]);
+	cmdinfo->tokens[i] = NULL;
+	cmdinfo->tokens[i + 1] = NULL;
 	return (i);
 }
 
-static int	ft_set_output(t_split *content, int i, int flag)
+static int	ft_set_output(t_split *cmdinfo, int i, int flag)
 {
-	if (!content->tokens[i + 1])
+	if (!cmdinfo->tokens[i + 1])
 		return (-666);
 	if (flag)
-		content->appo = 1;
+		cmdinfo->appo = 1;
 	else
-		content->redo = 1;
-	if (!content->oname)
-		content->oname = ft_strdup(content->tokens[i + 1]);
-	free(content->tokens[i]);
-	free(content->tokens[i + 1]);
-	content->tokens[i] = NULL;
-	content->tokens[i + 1] = NULL;
+		cmdinfo->redo = 1;
+	if (!cmdinfo->oname)
+		cmdinfo->oname = ft_strdup(content->tokens[i + 1]);
+	free(cmdinfo->tokens[i]);
+	free(cmdinfo->tokens[i + 1]);
+	cmdinfo->tokens[i] = NULL;
+	cmdinfo->tokens[i + 1] = NULL;
 	return (i);
 
 }
 
-int	ft_checktoken_input(t_split *content, int i)
+int	ft_checktoken_input(t_split *cmdinfo, int i)
 {
-	if (!content->tokens[i])
+	if (!cmdinfo->tokens[i])
 		return (i);
-	if (!ft_strncmp(content->tokens[i], "<<", 3))
+	if (!ft_strncmp(cmdinfo->tokens[i], "<<", 3))
 	{
-		i = ft_set_input(content, i, 1);
+		i = ft_set_input(cmdinfo, i, 1);
 		return (i + 1);
 	}
-	else if (!ft_strncmp(content->tokens[i], "<", 2))
+	else if (!ft_strncmp(cmdinfo->tokens[i], "<", 2))
 	{
-		i = ft_set_input(content, i, 0);
+		i = ft_set_input(cmdinfo, i, 0);
 		return (i + 1);
 	}
 	return (i);
 }
 
-int	ft_checktoken_output(t_split *content, int i)
+int	ft_checktoken_output(t_split *cmdinfo, int i)
 {
-	if (!content->tokens[i])
+	if (!cmdinfo->tokens[i])
 		return (i);
-	if (!ft_strncmp(content->tokens[i], ">>", 3))
+	if (!ft_strncmp(cmdinfo->tokens[i], ">>", 3))
 	{
-		i = ft_set_output(content, i, 1);
+		i = ft_set_output(cmdinfo, i, 1);
 		return (i + 1);
 	}
-	else if (!ft_strncmp(content->tokens[i], ">", 2))
+	else if (!ft_strncmp(cmdinfo->tokens[i], ">", 2))
 	{
-		i = ft_set_output(content, i, 0);
+		i = ft_set_output(cmdinfo, i, 0);
 		return (i + 1);
 	}
 	return (i);

@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:12:51 by joupark           #+#    #+#             */
-/*   Updated: 2022/01/12 14:26:28 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/07 10:58:56 by khee-seo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	ft_cpytokens(char **matrix, char **new, int i, int n)
 
 void		ft_makecmdlst(char **matrix, t_list **lsthead)
 {
-	t_split	*content;
+	t_split	*cmdinfo;
 	int		i;
 	int		num;
 
@@ -59,12 +59,12 @@ void		ft_makecmdlst(char **matrix, t_list **lsthead)
 		num = ft_tokensnum(matrix, i);
 		if (num)
 		{
-			content = ft_calloc(1, sizeof(t_split));
-			if (!content)
+			cmdinfo = ft_calloc(1, sizeof(t_split));
+			if (!cmdinfo)
 				return ;
-			content->tokens = ft_calloc(num + 1, sizeof(char *));
-			ft_cpytokens(matrix, content->tokens, i, num);
-			ft_lstadd_back(lsthead, ft_lstnew(content));
+			cmdinfo->tokens = ft_calloc(num + 1, sizeof(char *));
+			ft_cpytokens(matrix, cmdinfo->tokens, i, num);
+			ft_lstadd_back(lsthead, ft_lstnew(cmdinfo));
 			i += num;
 		}
 		else
