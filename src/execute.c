@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:20:47 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/07 11:08:34 by khee-seo         ###   ########.fr       */
+/*   Updated: 2022/02/08 12:10:10 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	ft_run_cmd(t_list **envhead, t_split *cmdinfo)
 
 	pid = 0;
 	status = 0;
-	name = ft_file_exist(cmdinfo->tokens[0], ft_getpath(envhead), 0);
+	name = ft_file_exists(cmdinfo->tokens[0], ft_getpath(envhead), 0);
 	if (name)
 	{
 		pid = fork();

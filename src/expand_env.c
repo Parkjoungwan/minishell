@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 13:27:24 by joupark           #+#    #+#             */
-/*   Updated: 2022/01/12 14:11:43 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/08 12:08:35 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_checksingle(char *str)
 	return (1);
 }
 
-static int ft_findexit(char *str)
+int ft_findexit(char *str)
 {
 	int result;
 
@@ -39,7 +39,7 @@ static int ft_findexit(char *str)
 
 }
 
-static int ft_findentry(char *str)
+int ft_findentry(char *str)
 {
 	int result;
 

@@ -26,7 +26,7 @@ int	ft_print_error(t_list **envhead, const char *str, int nbr)
 	return (nbr);
 }
 
-int	ft_c_error(t_list **envhead, char *s1, char *s2, int nbr)
+void	ft_c_error(t_list **envhead, char *s1, char *s2, int nbr)
 {
 	char	*msg;
 

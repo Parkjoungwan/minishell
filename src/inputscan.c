@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inputsacn.c                                        :+:      :+:    :+:   */
+/*   inputscan.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 10:12:25 by joupark           #+#    #+#             */
-/*   Updated: 2022/01/12 10:22:34 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/08 12:05:23 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static char	*cleanup(char *input)
+static char	*ft_cleanup(char *input)
 {
 
 	char	*result;

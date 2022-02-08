@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 11:57:36 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/07 10:52:55 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/08 12:04:49 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_inputcon(t_list **envhead, t_split *cmdinfo)
 	}
 	cmdinfo->fdin = dup(STDIN_FILENO);
 	if (dup2(fd, STDIN_FILENO) == -1)
-		ft_printf_error(envhead, "dup2", -1);
+		ft_print_error(envhead, "dup2", -1);
 	if (cmdinfo->fdin == -1)
 	{
 		ft_print_error(envhead, "dup", -1);

@@ -12,7 +12,7 @@
 
 #include "../includes/minishell.h"
 
-void	builtin_env(t_list **envhead)
+void	ft_builtin_env(t_list **envhead)
 {
 	t_env	*ptr;
 	t_list	*head;
@@ -30,6 +30,6 @@ void	builtin_env(t_list **envhead)
 			printf("\n");
 		head = head->next;
 	}
-	ms_print_error(envhead, NULL, 0);
+	ft_print_error(envhead, NULL, 0);
 	return ;
 }

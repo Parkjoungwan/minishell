@@ -12,7 +12,7 @@
 
 #include "../includes/minishell.h"
 
-void	builtin_pwd(t_list **envhead)
+void	ft_builtin_pwd(t_list **envhead)
 {
 	char	*str;
 

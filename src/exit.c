@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 14:28:37 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/07 11:02:10 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/08 12:12:00 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_delcmd(void *lst)
 void	ft_lstfree(t_list **env, int flag)
 {
 	t_list	**curr;
-	t_list	**next;
+	t_list	*next;
 
 	curr = env;
 	while (*curr)

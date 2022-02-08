@@ -82,7 +82,7 @@ void		ft_builtin_unset(t_list **envhead, t_split *cmdinfo)
 		{
 			printf("unset : \'%s\': not a valid", cmdinfo->tokens[i]);
 			printf(" identifier\n");
-			ft_printf_error(envhead, NULL, 1);
+			ft_print_error(envhead, NULL, 1);
 			break;
 		}
 		i++;

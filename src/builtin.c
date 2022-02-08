@@ -72,7 +72,7 @@ static int	run_builtin(t_split *cmdinfo, t_list **envhead, int len, t_list **lst
 	return (0);
 }
 
-int	built_exec(t_split *cmdinfo, t_list **envhead, int len, t_list **lsthead)
+int	ft_built_exec(t_split *cmdinfo, t_list **envhead, int len, t_list **lsthead)
 {
 	int	err;
 

@@ -33,7 +33,7 @@ static void	ft_print_export(t_list **envhead)
 	int		i;
 	
 	i = 0;
-	ptr = ft_sortenv(envhead);
+	ptr = ft_envsort(envhead);
 	while (ptr && ptr[i])
 	{
 		printf("declare -x ");
