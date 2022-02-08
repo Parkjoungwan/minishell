@@ -42,7 +42,7 @@ int	ft_builtin_cd(t_list **envhead, t_split *cmdinfo)
 	char	*new;
 	
 	if (!envhead || !cmdinfo)
-		return ;
+		return (1);
 	if (1 > ft_strlen(cmdinfo->tokens[1]))
 		err = chdir(ft_getenv(*envhead, "HOME"));
 	else
