@@ -79,7 +79,7 @@ int				ft_print_error(t_list **envhead, const char *str, int nbr);
 void			ft_c_error(t_list **envhead, char *s1, char *s2, int nbr);
 int				ft_close_redirect(t_split *cmdinfo);
 int				ft_redirect(t_list **envhead, t_split *cmdinfo);
-int				ft_update_dir(t_list **envhead) 
+int				ft_update_dir(t_list **envhead);
 char			*check_tilde(t_list **envhead, char *str);
 int				ft_builtin_cd(t_list **envhead, t_split *cmdinfo);
 int				ft_built_exec(t_split *cmdinfo, t_list **envhead, int len, t_list **lsthead);
