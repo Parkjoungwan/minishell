@@ -15,10 +15,6 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 
-# ifndef 
-#  define 
-# endif
-
 typedef struct	s_env
 {
 	char		*name;
