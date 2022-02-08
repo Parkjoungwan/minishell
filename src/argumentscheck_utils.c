@@ -16,7 +16,6 @@ static int ft_set_input(t_split *cmdinfo, int i, int flag)
 {
 	if (!cmdinfo->tokens[i + 1])
 		return (-666);
-	//twoi, onei 이런거 좀 바로 알수 있게 구조체 수정할 것.
 	if (flag)
 		cmdinfo->twoi = 1;
 	else

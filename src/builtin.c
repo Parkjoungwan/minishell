@@ -53,10 +53,10 @@ static void	destory_pipe(t_split *cmdinfo)
 	close(cmdinfo->pcpyout);
 }
 
-static int	run_builtin(t_split *cmdinfo, t_list **envhead, int len, t_list **lst)
+static int	run_builtin(t_split *cmdinfo, t_list **envhead, int len, t_list **lsthead)
 {
 	if (len > 3 && !cmdinfo->piped && !strncmp(cmdinfo->tokens[0], "exit", len))
-		ft_exit_cmd(envhead, lst, cmdinfo);
+		ft_exit_cmd(envhead, lsthead, cmdinfo);
 	else if (len > 1 && !strncmp(cmdinfo->tokens[0], "cd", len))
 		ft_builtin_cd(envhead, cmdinfo);
 	else if (len > 2 && !strncmp(cmdinfo->tokens[0], "env", len))

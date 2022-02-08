@@ -1,24 +1,64 @@
 NAME = minishell
-LIBFT = ./Libft
-RDLIB = /usr/local/opt/readline/lib/
-RDHEAD = /usr/local/opt/readline/include
-SRC = src/main.c src/envset.c src/makeprompt.c src/sigdefine.c Libft/ft_calloc.c Libft/ft_lstadd_back.c Libft/ft_lstnew.c Libft/ft_memcpy.c Libft/ft_strlcat.c Libft/ft_strlen.c Libft/ft_strncmp.c Libft/ft_memset.c Libft/ft_lstlast.c src/exit.c src/inputscan.c src/insertspace.c Libft/ft_strjoin.c Libft/ft_strdup.c Libft/ft_substr.c Libft/ft_strchr.c Libft/ft_isalnum.c Libft/ft_strtrim.c
+LIBFT = Libft
+SRC = src/argumentscheck_utils.c \
+	src/argumentscheck.c \
+	src/builtin_cd.c \
+	src/builtin_echo.c \
+	src/builtin_env.c \
+	src/builtin_export.c \
+	src/builtin_pwd.c \
+	src/builtin_unset.c \
+	src/builtin.c \
+	src/check_builtin.c \
+	src/cutbytokens.c \
+	src/delentry.c \
+	src/document.c \
+	src/envset_util.c \
+	src/envset.c \
+	src/envsort.c \
+	src/error.c \
+	src/execute.c \
+	src/exit_here.c \
+	src/exit.c \
+	src/expand_env_utils.c \
+	src/expand_env.c \
+	src/files.c \
+	src/initpipes.c \
+	src/inputscan.c \
+	src/insertspace.c \
+	src/main.c \
+	src/makecmdlst.c \
+	src/makeprompt.c \
+	src/pipeexec.c \
+	src/redirect.c \
+	src/sigdefine.c \
+	src/sigdefine2.c
+	
 CC = gcc
-FLAGS = -pthread -lreadline -Wall -Wextra -Werror
+FLAGS = -pthread
 RM = rm -f
 
+RL= -L/opt/homebrew/opt/readline/lib \
+	-I/opt/homebrew/opt/readline/include
+##	-L /Users/khee-seo/.brew/opt/readline/lib \
+##	-I /Users/khee-seo/.brew/opt/readline/include
+
 $(NAME) : $(SRC) $(LIBFT)
-	$(CC) $(FLAGS) $(SRC) -L$(RDLIB) -I$(RDHEAD) -o $(NAME)
+	@make bonus -C $(LIBFT)
+	@echo "\033[32m"Making LIBFT..."\033[0m"
+	@$(CC) $(FLAGS) $(SRC) -L$(LIBFT) -lft -lreadline -o $(NAME) $(RL)
 	@echo "\033[32m"Making minishell..."\033[0m"
 
 all: $(NAME)
 
 fclean : clean
 	@$(RM) $(NAME)
+	@echo "\033[31m"clean minishell..."\033[0m"
+	@make fclean -C $(LIBFT)
 	@echo "\033[31m"fclean libft..."\033[0m"
 
 clean :
-	@echo "\033[31m"clean..."\033[0m"
+	@make clean -C $(LIBFT)
+	@echo "\033[31m"clean libft..."\033[0m"
 
 re : fclean all
-

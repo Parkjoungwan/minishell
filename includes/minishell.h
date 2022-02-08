@@ -5,13 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/05 10:07:38 by joupark           #+#    #+#             */
-/*   Updated: 2022/01/12 11:08:59 by joupark          ###   ########.fr       */
+/*   Created: 2022/02/08 11:45:54 by joupark           #+#    #+#             */
+/*   Updated: 2022/02/08 11:46:27 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+
 # include "../Libft/libft.h"
 # include <stdlib.h>
 # include <stdio.h>
@@ -26,55 +27,87 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 
-typedef struct s_env
+typedef struct	s_env
 {
-	char	*name;
-	char	*val;
-}		t_env;
+	char		*name;
+	char		*value;
+}				t_env;
 
-typedef struct s_split
+typedef struct	s_split
 {
-	char	**tokens;
-	char	*iname;
-	char	*oname;
-	int		err;
-	int		redi;
-	int		redo;
-	int		appi;
-	int		appo;
-	int		fdout;
-	int		fdin;
-	int		fdhere;
-	int		pcpyin;
-	int		pcpyout;
-	int		piped;
-	int		pipenbr;
-	int		*pipefd;
-}		t_split;
+	char		**tokens;
+	char		*iname;
+	char		*oname;
+	int			err;
+	int			onei;
+	int			oneo;
+	int			twoi;
+	int			twoo;
+	int			fdout;
+	int			fdin;
+	int			fdhere;
+	int			pcpyin;
+	int			pcpyout;
+	int			piped;
+	int			pipenbr;
+	int			*pipefd;
+}				t_split;
 
+int				ft_argumentscheck(t_list **lsthead, int i, int size);
+void			close_one_pipe(t_split *cmdinfo);
+void			close_pipes(t_split *cmdinfo);
+void			ft_pipe_exec(char *name, t_list **envhead, t_split *cmdinfo);
+void			ft_doc_input(t_list **envhead, t_split *cmdinfo);
+int				ft_checktoken_input(t_split *cmdinfo, int i);
+int				ft_checktoken_output(t_split *cmdinfo, int i);
+void			ft_builtin_echo(t_list **envhead, t_split *cmdinfo);
+void			ft_export_err(t_list **envhead, char *token);
+int				ft_builtin_export(t_list **envhead, t_split *cmdinfo);
+t_env			**ft_envsort(t_list **envhead);
+char			*ft_file_exists(char *name, char *path, int i);
+int				ft_execute(t_list **envhead, t_list **lsthead);
+void			ft_delentry(void *lst);
+void			ft_delcmd(void *lst);
+void			ft_lstfree(t_list **env, int flag);
+void			ft_exit(t_list **env, t_list ** lst);
+void			ft_exit_cmd(t_list **envhead, t_list **lst, t_split *cmdinfo);
+void			ft_sigdefine(void);
+void			ft_sigblock(void);
+void			ft_delentry(void *lst);
+void			ft_builtin_unset(t_list **envhead, t_split *cmdinfo);
+void			builtin_pwd(t_list **envhead);
+void			builtin_env(t_list **envhead);
+char			*ft_expandmake(char *str, char *insert, int entry, int exit);
+int				ft_expandcheck(char **matrix, int i);
+void			exp_var(char **matrix, int i, t_list **envhead);
+void			ft_makecmdlst(char **matrix, t_list **lsthead);
+void			interrupt_here_document(int signal);
+char			**ft_cutbytokens(char *input, t_list **envhead);
+void			ft_expand_env(char **matrix, t_list **envhead);
+void			ft_inputscan(char *input, t_list **envhead, t_list **lsthead);
+int				ft_print_error(t_list **envhead, const char *str, int nbr);
+int				ft_c_error(t_list **envhead, char *s1, char *s2, int nbr);
+int				ft_close_redirect(t_split *cmdinfo);
+int				ft_redirect(t_list **envhead, t_split *cmdinfo);
+int				ft_update_dir(t_list **envhead);
+char			*check_tilde(t_list **envhead, char *str);
+void			builtin_cd(t_list **envhead, t_split *cmdinfo);
+int				built_exec(t_split *cmdinfo, t_list **envhead, int len, t_list **lsthead);
+void			ft_insertspace(char **line);
+void			ft_delcmd(void	*lst);
+void			ft_delone_entry(t_list **head);
+int				ft_checkbuilt(t_split *cmdinfo, int len);
+int				ft_isnewlst(t_list **envhead, char *name, char *val);
+int				ft_putenv(t_list **envhead, char *name, char *val);
+char			**ft_exportenv(t_list **envhead);
+char			*ft_getenv(t_list *envhead, char *target);
+char			*ft_make_prompt(t_list *envhead);
+int				ft_initpipes(t_list **lsthead);
+void			ft_exit_here(int fd, char *str);
+int				ft_envnamelen(char *str);
+char			**ft_envsplit(char *str);
+int				ft_env_addlist(t_list **envhead, char *env);
+int				ft_getenvnbr(t_list **envhead);
+int				ft_envset(t_list **envhead, char **envs);
 
-char	*ft_strjoin(char const *s1, char const *s2);
-char    *ft_strdup(const char *s);
-char    *ft_substr(char const *s, unsigned int start, size_t len);
-char    *ft_strchr(const char *src, int c);
-int     ft_isalnum(int ch);
-char    *ft_strtrim(char const *s1, char const *set);
-//01.12
-void    *ft_memset(void *dst, int c, size_t lenght);
-t_list  *ft_lstlast(t_list *lst);
-void    *ft_calloc(size_t count, size_t size);
-void    ft_lstadd_back(t_list **lst, t_list *new);
-t_list	*ft_lstnew(void *content);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
-size_t  ft_strlcat(char *dest, const char *src, size_t dstsize);
-size_t	ft_strlen(const char *s);
-int     ft_strncmp(const char *s1, const char *s2, size_t n);
-int		ft_envset(t_list **envhead, char **envs);
-char    *ft_getenv(t_list *envhead, char *target);
-char    *ft_make_prompt(t_list *envhead);
-void    ft_sigdefine(void);
-void    ft_delentry(void *lst);
-void    ft_delcmd(void *lst);
-void    ft_lstfree(t_list **env, int flag);
-void    ft_exit(t_list **env, t_list ** lst);
 #endif

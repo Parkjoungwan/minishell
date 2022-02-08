@@ -73,7 +73,7 @@ int	ft_execute(t_list **envhead, t_list **lsthead)
 	if (!envhead || !lsthead)
 		return (0);
 	if (ft_lstsize(*lsthead) > 1)
-		err = err | ft_initpipes(lsthead);//02.03 여까지함.
+		err = err | ft_initpipes(lsthead);
 	while (*lsthead && err >= 0)
 	{
 		cmdinfo = (t_split *)((*lsthead)->content);

@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 11:46:41 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/07 11:48:01 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/08 11:59:06 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_update_dir(t_list **envhead)
 	err = 0;
 	ft_print_error(envhead, NULL, 0); // 나중에 해석하기
 	err = ft_putenv(envhead, "OLDPWD", ft_getenv(*envhead, "PWD"));
-	if (err = 0) // 바꿔치기했다면
+	if (err == 0)
 	{
 		new = getcwd(NULL, 0); // 현재 작업 디렉
 		err = ft_putenv(envhead, "PWD", new);
