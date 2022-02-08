@@ -6,13 +6,13 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 11:46:41 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/07 11:48:01 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/08 12:27:28 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	ft_update_dir(t_list **envhead) 
+int	ft_update_dir(t_list **envhead)
 {
 	int	err;
 	char	*new;
