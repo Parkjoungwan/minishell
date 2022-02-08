@@ -74,7 +74,7 @@ void	ft_export_err(t_list **envhead, char *token)
 	free(front);
 }
 
-int	ft_builtin_export(t_list **envhead, t_split *cmdinfo)
+void	ft_builtin_export(t_list **envhead, t_split *cmdinfo)
 {
 	char	**new;
 	int		i;

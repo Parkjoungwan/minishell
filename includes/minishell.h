@@ -50,7 +50,7 @@ int				ft_checktoken_input(t_split *cmdinfo, int i);
 int				ft_checktoken_output(t_split *cmdinfo, int i);
 void			ft_builtin_echo(t_list **envhead, t_split *cmdinfo);
 void			ft_export_err(t_list **envhead, char *token);
-int				ft_builtin_export(t_list **envhead, t_split *cmdinfo);
+void			ft_builtin_export(t_list **envhead, t_split *cmdinfo);
 t_env			**ft_envsort(t_list **envhead);
 char			*ft_file_exists(char *name, char *path, int i);
 int				ft_execute(t_list **envhead, t_list **lsthead);

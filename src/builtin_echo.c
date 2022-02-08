@@ -26,7 +26,7 @@ static int	ft_check_echoflag(char *str)
 	return (1);
 }
 
-static int	ft_echo_print(char *str, int flag)
+static void	ft_echo_print(char *str, int flag)
 {
 	if (!flag)
 		write(STDOUT_FILENO, str, ft_strlen(str));
