@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 10:33:37 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/06 12:58:01 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/08 15:17:28 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	**ft_exportenv(t_list **envhead)
 	int		i;
 
 	i = 0;
-	arr = ft_calloc(ft_getenvnbr(envhead + 1), sizeof(char *));
+	arr = ft_calloc(ft_getenvnbr(envhead) + 1, sizeof(char *));
 	if (!arr)
 		return (NULL);
 	lst = *envhead;

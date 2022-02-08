@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 10:07:15 by joupark           #+#    #+#             */
-/*   Updated: 2022/01/12 14:29:27 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/08 12:54:42 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	main(void)
 	*lsthead = NULL;
 	if (ft_envset(envhead, environ))
 		return (1);
+	ft_putenv(envhead, "?", "0");
 	ft_init_shell(envhead, lsthead, NULL, NULL);
 	return (0);
 }
