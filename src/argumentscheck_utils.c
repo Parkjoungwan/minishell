@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 11:06:52 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/07 11:04:51 by khee-seo         ###   ########.fr       */
+/*   Updated: 2022/02/08 10:48:44 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 static int ft_set_input(t_split *cmdinfo, int i, int flag)
 {
-	//리턴값 중2병 뺄 것
 	if (!cmdinfo->tokens[i + 1])
 		return (-666);
-	//appi, redi 이런거 좀 바로 알수 있게 구조체 수정할 것.
+	//twoi, onei 이런거 좀 바로 알수 있게 구조체 수정할 것.
 	if (flag)
-		cmdinfo->appi = 1;
+		cmdinfo->twoi = 1;
 	else
-		cmdinfo->redi = 1;
+		cmdinfo->onei = 1;
 	if (!cmdinfo->iname)
 		cmdinfo->iname = ft_strdup(cmdinfo->tokens[i + 1]);
 	free(cmdinfo->tokens[i]);
@@ -36,9 +35,9 @@ static int	ft_set_output(t_split *cmdinfo, int i, int flag)
 	if (!cmdinfo->tokens[i + 1])
 		return (-666);
 	if (flag)
-		cmdinfo->appo = 1;
+		cmdinfo->twoo = 1;
 	else
-		cmdinfo->redo = 1;
+		cmdinfo->oneo = 1;
 	if (!cmdinfo->oname)
 		cmdinfo->oname = ft_strdup(cmdinfo->tokens[i + 1]);
 	free(cmdinfo->tokens[i]);

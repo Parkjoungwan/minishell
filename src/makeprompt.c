@@ -22,7 +22,7 @@ char	*ft_getenv(t_list *envhead, char *target)
 	{
 		temp = (t_env *)(envhead->content);
 		if (!ft_strncmp(temp->name, target, ft_strlen(target) + 1))
-			return (temp->val);
+			return (temp->value);
 		envhead = envhead->next;
 	}
 	return (NULL);

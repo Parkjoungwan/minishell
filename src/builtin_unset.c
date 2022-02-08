@@ -37,7 +37,7 @@ void	ft_delentry(void *lst)
 {
 	t_env	*content;
 	
-	cnt = (t_env *)lst;
+	content = (t_env *)lst;
 	if (content->name)
 		free(content->name);
 	if (content->value)

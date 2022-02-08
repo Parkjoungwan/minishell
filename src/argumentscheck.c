@@ -87,7 +87,6 @@ int		ft_argumentscheck(t_list **lsthead, int i, int size)
 		if (i < 0)
 		{
 			ft_synerror(lsthead);
-			//리턴값 중2병 빼기.
 			return (666);
 		}
 		lst = lst->next;

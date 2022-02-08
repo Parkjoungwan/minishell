@@ -38,9 +38,9 @@ static int	ft_outputcon(t_list **envhead, t_split *cmdinfo)
 	int fd;
 
 	fd = 0;
-	if (cmdinfo->redo == 1)
+	if (cmdinfo->oneo == 1)
 		fd = open(cmdinfo->oname, O_WRONLY | O_TRUNC | O_CREAT, 0644);
-	else if (cmdinfo->appo == 1)
+	else if (cmdinfo->twoo == 1)
 		fd = open(cmdinfo->oname, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	if (fd == -1)
 	{
@@ -86,11 +86,11 @@ int			ft_redirect(t_list **envhead, t_split *cmdinfo)
 	int	err;
 
 	err = 0;
-	if (cmdinfo->redi)
+	if (cmdinfo->onei)
 		err = ft_inputcon(envhead, cmdinfo);
-	if (!err && cmdinfo->appi)
+	if (!err && cmdinfo->twoi)
 		ft_doc_input(envhead, cmdinfo);
-	if (!err && (cmdinfo->redo || cmdinfo->appo))
+	if (!err && (cmdinfo->oneo || cmdinfo->twoo))
 		err = err | ft_outputcon(envhead, cmdinfo);
 	return (err);
 }

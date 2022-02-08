@@ -88,9 +88,9 @@ void	ft_pipe_exec(char *name, t_list **envhead, t_split *cmdinfo)
 	else
 	{
 		in = cmdinfo->pipenbr * 2;
-		if (!cmdinfo->redo && !cmdinfo->appo && cmdinfo->pipenbr != cmdinfo->piped)
+		if (!cmdinfo->oneo && !cmdinfo->twoo && cmdinfo->pipenbr != cmdinfo->piped)
 			dup2(cmdinfo->pipefd[in + 1], STDOUT_FILENO);
-		if (!cmdinfo->redi && !cmdinfo->appi && cmdinfo->pipenbr > 0)
+		if (!cmdinfo->onei && !cmdinfo->twoi && cmdinfo->pipenbr > 0)
 			dup2(cmdinfo->pipefd[in - 2], STDIN_FILENO);
 		err = execve(name, get_argv(cmdinfo, name), ft_exportenv(envhead));
 		close_pipes(cmdinfo);

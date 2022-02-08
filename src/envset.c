@@ -62,7 +62,7 @@ int	ft_env_addlist(t_list **envhead, char *env)
 	if (!split)
 		return (1);
 	node->name = split[0];
-	node->val = split[1];
+	node->value = split[1];
 	ft_lstadd_back(envhead, ft_lstnew(node));
 	free(split);
 	return (0);

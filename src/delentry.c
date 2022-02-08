@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell0"
+#include "../includes/minishell.h"
 
 void	ft_delcmd(void	*lst)
 {
@@ -38,7 +38,7 @@ void	ft_delcmd(void	*lst)
 void	ft_delone_entry(t_list **head)
 {
 	t_list	**curr;
-	t_list	next;
+	t_list	*next;
 
 	curr = head;
 	if (!(*curr))

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incldues/minishell.h"
+#include "../includes/minishell.h"
 
 int		ft_isnewlst(t_list **envhead, char *name, char *val)
 {
@@ -38,7 +38,7 @@ int		ft_putenv(t_list **envhead, char *name, char *val)
 	while (iter)
 	{
 		tmp = (t_env *)(iter->content);
-		if (!ft_strncmp(ptr->name, name, ft_strlen(name) + 1))
+		if (!ft_strncmp(tmp->name, name, ft_strlen(name) + 1))
 			break;
 		iter = iter->next;
 	}
@@ -65,7 +65,7 @@ char	**ft_exportenv(t_list **envhead)
 	int		i;
 
 	i = 0;
-	arr = ft_calloc(ft_getenvnbr(envhead + 1, sizeof(char *)));
+	arr = ft_calloc(ft_getenvnbr(envhead + 1), sizeof(char *));
 	if (!arr)
 		return (NULL);
 	lst = *envhead;

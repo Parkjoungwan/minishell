@@ -19,8 +19,8 @@ void	ft_delentry(void *lst)
 	cnt = (t_env *)(lst);
 	if (cnt->name)
 		free(cnt->name);
-	if (cnt->val)
-		free(cnt->val);
+	if (cnt->value)
+		free(cnt->value);
 	free(cnt);
 }
 

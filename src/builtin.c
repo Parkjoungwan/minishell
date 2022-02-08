@@ -6,11 +6,11 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 12:20:13 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/07 10:54:46 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/08 11:05:44 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incldues/minishell.h"
+#include "../includes/minishell.h"
 
 static int fork_or_not(t_split *cmdinfo, int len)
 {
@@ -39,7 +39,7 @@ static void	built_pipe(t_split *cmdinfo)
 	cmdinfo->pcpyin = dup(STDIN_FILENO);
 	cmdinfo->pcpyout = dup(STDOUT_FILENO);
 	in = cmdinfo->pipenbr * 2;
-	if (cmdinfo->pipenbr != data->piped)
+	if (cmdinfo->pipenbr != cmdinfo->piped)
 		dup2(cmdinfo->pipefd[in + 1], STDOUT_FILENO);
 	if (cmdinfo->pipenbr > 0)
 		dup2(cmdinfo->pipefd[in - 2], STDIN_FILENO);
@@ -47,15 +47,15 @@ static void	built_pipe(t_split *cmdinfo)
 
 static void	destory_pipe(t_split *cmdinfo)
 {
-  dup2(cmdinfo->pipefd[in - 2], STDIN_FILENO)	dup2(data->pcpyin, STDIN_FILENO);
+	dup2(cmdinfo->pcpyin, STDIN_FILENO);
 	dup2(cmdinfo->pcpyout, STDOUT_FILENO);
 	close(cmdinfo->pcpyin);
 	close(cmdinfo->pcpyout);
 }
 
-static int	run_builtin(t_split *cmdinfo, t_list **envhead, t_list **lst)
+static int	run_builtin(t_split *cmdinfo, t_list **envhead, int len, t_list **lst)
 {
-	if (len > 3 && !cmdinfo->piped && !strncmp(data->tokens[0], "exit", len))
+	if (len > 3 && !cmdinfo->piped && !strncmp(cmdinfo->tokens[0], "exit", len))
 		ft_exit_cmd(envhead, lst, cmdinfo);
 	else if (len > 1 && !strncmp(cmdinfo->tokens[0], "cd", len))
 		ft_builtin_cd(envhead, cmdinfo);
