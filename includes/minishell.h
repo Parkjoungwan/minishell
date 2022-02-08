@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 11:45:54 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/08 11:46:27 by joupark          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -26,6 +14,10 @@
 # include <unistd.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+
+# ifndef 
+#  define 
+# endif
 
 typedef struct	s_env
 {
@@ -75,24 +67,26 @@ void			ft_sigdefine(void);
 void			ft_sigblock(void);
 void			ft_delentry(void *lst);
 void			ft_builtin_unset(t_list **envhead, t_split *cmdinfo);
-void			builtin_pwd(t_list **envhead);
-void			builtin_env(t_list **envhead);
+void			ft_builtin_pwd(t_list **envhead);
+void			ft_builtin_env(t_list **envhead);
 char			*ft_expandmake(char *str, char *insert, int entry, int exit);
 int				ft_expandcheck(char **matrix, int i);
 void			exp_var(char **matrix, int i, t_list **envhead);
 void			ft_makecmdlst(char **matrix, t_list **lsthead);
 void			interrupt_here_document(int signal);
 char			**ft_cutbytokens(char *input, t_list **envhead);
+int				ft_findexit(char *str);
+int				ft_findentry(char *str);
 void			ft_expand_env(char **matrix, t_list **envhead);
 void			ft_inputscan(char *input, t_list **envhead, t_list **lsthead);
 int				ft_print_error(t_list **envhead, const char *str, int nbr);
-int				ft_c_error(t_list **envhead, char *s1, char *s2, int nbr);
+void			ft_c_error(t_list **envhead, char *s1, char *s2, int nbr);
 int				ft_close_redirect(t_split *cmdinfo);
 int				ft_redirect(t_list **envhead, t_split *cmdinfo);
-int				ft_update_dir(t_list **envhead);
+int				ft_update_dir(t_list **envhead) 
 char			*check_tilde(t_list **envhead, char *str);
-void			builtin_cd(t_list **envhead, t_split *cmdinfo);
-int				built_exec(t_split *cmdinfo, t_list **envhead, int len, t_list **lsthead);
+int				ft_builtin_cd(t_list **envhead, t_split *cmdinfo);
+int				ft_built_exec(t_split *cmdinfo, t_list **envhead, int len, t_list **lsthead);
 void			ft_insertspace(char **line);
 void			ft_delcmd(void	*lst);
 void			ft_delone_entry(t_list **head);
