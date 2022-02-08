@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 10:52:07 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/07 12:00:43 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/08 12:43:03 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,6 @@ static int	ft_namecmp(t_list *lst, char *str)
 	if (!ft_strncmp(str, tmp->name, ft_strlen(tmp->name) + 1))
 		return (1);
 	return (0);
-}
-
-void	ft_delentry(void *lst)
-{
-	t_env	*content;
-	
-	content = (t_env *)lst;
-	if (content->name)
-		free(content->name);
-	if (content->value)
-		free(content->value);
-	free(content);
 }
 
 static void	ft_unsetvar(t_list **envhead, char *str)
