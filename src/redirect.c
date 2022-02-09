@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 11:57:36 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/08 12:04:49 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/09 11:50:19 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	ft_close_redirect(t_split *cmdinfo)
 	}
 	if (cmdinfo->fdout > 0)
 	{
-		err = err | dup2(cmdinfo->fdout, STDIN_FILENO);
+		err = err | dup2(cmdinfo->fdout, STDOUT_FILENO);
 		close(cmdinfo->fdout);
 	}
 	if (cmdinfo->fdhere > 0)
