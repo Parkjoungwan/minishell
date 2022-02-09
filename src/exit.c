@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 14:28:37 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/08 12:12:00 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/09 23:21:37 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ void	ft_lstfree(t_list **env, int flag)
 	free(env);
 }
 
-void	ft_exit(t_list **env, t_list ** lst)
+void	ft_exit(t_list **env, t_list **lst)
 {
-	int num;
+	int	num;
 
 	num = ft_atoi(ft_getenv(*env, "?"));
 	if (env)
@@ -79,8 +79,8 @@ void	ft_exit(t_list **env, t_list ** lst)
 
 void	ft_exit_cmd(t_list **envhead, t_list **lst, t_split *cmdinfo)
 {
-	int i;
-	int n;
+	int	i;
+	int	n;
 
 	i = 0;
 	n = 0;

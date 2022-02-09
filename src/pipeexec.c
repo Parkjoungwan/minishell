@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 11:46:27 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/07 10:57:39 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/09 23:31:46 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static char	**get_argv(t_split *cmdinfo, char *name)
 	char	**argv;
 
 	max = 0;
-	//뒤에 NULL 2개다.
 	while (cmdinfo->tokens[max] != NULL)
 		max++;
 	max++;
@@ -42,7 +41,7 @@ static char	**get_argv(t_split *cmdinfo, char *name)
 
 void	close_one_pipe(t_split *cmdinfo)
 {
-	int in;
+	int	in;
 
 	if (cmdinfo->piped < 1)
 		return ;
@@ -64,7 +63,7 @@ void	close_one_pipe(t_split *cmdinfo)
 void	close_pipes(t_split *cmdinfo)
 {
 	int	in;
-	int i;
+	int	i;
 
 	if (cmdinfo->piped < 1)
 		return ;
@@ -88,7 +87,8 @@ void	ft_pipe_exec(char *name, t_list **envhead, t_split *cmdinfo)
 	else
 	{
 		in = cmdinfo->pipenbr * 2;
-		if (!cmdinfo->oneo && !cmdinfo->twoo && cmdinfo->pipenbr != cmdinfo->piped)
+		if (!cmdinfo->oneo && !cmdinfo->twoo
+			&& cmdinfo->pipenbr != cmdinfo->piped)
 			dup2(cmdinfo->pipefd[in + 1], STDOUT_FILENO);
 		if (!cmdinfo->onei && !cmdinfo->twoi && cmdinfo->pipenbr > 0)
 			dup2(cmdinfo->pipefd[in - 2], STDIN_FILENO);

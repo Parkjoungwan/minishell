@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:12:51 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/09 16:10:44 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/09 23:29:10 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_tokensnum(char **matrix, int i)
 {
-	int num;
+	int	num;
 
 	num = 0;
 	while (matrix && matrix[i])
@@ -43,7 +43,7 @@ static int	is_fake_redirect(char *str)
 
 static void	ft_cpytokens(char **matrix, char **tokens, int i, int num)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	if (!tokens)
@@ -53,13 +53,13 @@ static void	ft_cpytokens(char **matrix, char **tokens, int i, int num)
 		if (matrix[i + j][0] == '\"')
 		{
 			tokens[j] = ft_strtrim(matrix[i + j], "\"");
-			if(is_fake_redirect(matrix[i + j]))
+			if (is_fake_redirect(matrix[i + j]))
 				tokens[j] = ft_strjoin(tokens[j], "+-+");
 		}
 		else
 		{
 			tokens[j] = ft_strtrim(matrix[i + j], "\'");
-			if(is_fake_redirect(matrix[i + j]))
+			if (is_fake_redirect(matrix[i + j]))
 				tokens[j] = ft_strjoin(tokens[j], "+-+");
 		}
 		free(matrix[i + j]);
@@ -68,14 +68,14 @@ static void	ft_cpytokens(char **matrix, char **tokens, int i, int num)
 	tokens[j] = NULL;
 }
 
-void		ft_makecmdlst(char **matrix, t_list **lsthead)
+void	ft_makecmdlst(char **matrix, t_list **lsthead)
 {
 	t_split	*cmdinfo;
 	int		i;
 	int		num;
 
 	i = 0;
-	while (matrix && matrix[i]) //누수체크
+	while (matrix && matrix[i])
 	{
 		num = ft_tokensnum(matrix, i);
 		if (num)

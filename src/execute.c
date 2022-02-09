@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 13:20:47 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/09 15:57:14 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/09 23:20:52 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	ft_run_cmd(t_list **envhead, t_split *cmdinfo)
 	int		status;
 	char	**envv;
 	pid_t	pid;
-	
+
 	pid = 0;
 	status = 0;
 	name = ft_file_exists(cmdinfo->tokens[0], ft_getpath(envhead), 0);
@@ -52,8 +52,8 @@ static void	ft_run_cmd(t_list **envhead, t_split *cmdinfo)
 
 static int	ft_builtin(t_split *cmdinfo, t_list **envhead, t_list **lsthead)
 {
-	int len;
-	int blt;
+	int	len;
+	int	blt;
 
 	len = ft_strlen(cmdinfo->tokens[0]);
 	blt = ft_checkbuilt(cmdinfo, len);
@@ -66,17 +66,17 @@ static int	ft_builtin(t_split *cmdinfo, t_list **envhead, t_list **lsthead)
 
 static void	ft_fakeredirect(t_split *cmdinfo, int i)
 {
-	char *temp;
+	char	*temp;
 
 	while (cmdinfo->tokens[++i])
 	{
 		temp = cmdinfo->tokens[i];
 		if (!ft_strncmp(cmdinfo->tokens[i], "<+-+", 4))
-			temp = ft_strdup("<"); 
+			temp = ft_strdup("<");
 		else if (!ft_strncmp(cmdinfo->tokens[i], "<<+-+", 5))
-			temp = ft_strdup("<<"); 
+			temp = ft_strdup("<<");
 		else if (!ft_strncmp(cmdinfo->tokens[i], ">+-+", 4))
-			temp = ft_strdup(">"); 
+			temp = ft_strdup(">");
 		else if (!ft_strncmp(cmdinfo->tokens[i], ">>+-+", 5))
 			temp = ft_strdup(">>");
 		if (temp != cmdinfo->tokens[i])

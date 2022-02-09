@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 13:49:57 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/04 12:50:12 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/09 23:24:10 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ char	*ft_expandmake(char *str, char *insert, int entry, int exit)
 	return (new);
 }
 
-int		ft_expandcheck(char **matrix, int i)
+int	ft_expandcheck(char **matrix, int i)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	while (matrix[i][j] && matrix[i][j] != '$' && matrix[i][j] != '"')

@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 00:43:51 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/07 11:59:08 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/09 23:11:39 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ static void	ft_echo_print(char *str, int flag)
 	}
 }
 
-void		ft_builtin_echo(t_list **envhead, t_split *cmdinfo)
+void	ft_builtin_echo(t_list **envhead, t_split *cmdinfo)
 {
-	int i;
-	int flag;
+	int	i;
+	int	flag;
 
 	i = 1;
 	flag = 0;
-	while(ft_check_echoflag(cmdinfo->tokens[i]))
+	while (ft_check_echoflag(cmdinfo->tokens[i]))
 	{
 		flag++;
 		i++;

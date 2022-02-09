@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 14:14:24 by joupark           #+#    #+#             */
-/*   Updated: 2022/01/18 12:04:52 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/09 23:31:37 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_print_error(t_list **envhead, const char *str, int nbr)
 {
 	char	*name;
-	
+
 	if (str)
 		perror(str);
 	if (nbr < 0)

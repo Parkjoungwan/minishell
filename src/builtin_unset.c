@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 10:52:07 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/08 12:43:03 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/09 23:13:27 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	ft_unsetvar(t_list **envhead, char *str)
 	t_list	**current;
 	t_list	*next;
 	int		i;
-	
+
 	i = 0;
 	current = envhead;
 	while (*current)
@@ -55,10 +55,10 @@ static void	ft_unsetvar(t_list **envhead, char *str)
 	}
 }
 
-void		ft_builtin_unset(t_list **envhead, t_split *cmdinfo)
+void	ft_builtin_unset(t_list **envhead, t_split *cmdinfo)
 {
 	int	i;
-	
+
 	if (!cmdinfo)
 		return ;
 	i = 1;
@@ -71,7 +71,7 @@ void		ft_builtin_unset(t_list **envhead, t_split *cmdinfo)
 			printf("unset : \'%s\': not a valid", cmdinfo->tokens[i]);
 			printf(" identifier\n");
 			ft_print_error(envhead, NULL, 1);
-			break;
+			break ;
 		}
 		i++;
 	}

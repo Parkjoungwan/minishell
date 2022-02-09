@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 10:12:25 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/08 12:05:23 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/09 23:26:11 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static char	*ft_cleanup(char *input)
 {
-
 	char	*result;
 
 	result = ft_strtrim(input, " \t\r\n\v\f");
@@ -24,10 +23,10 @@ static char	*ft_cleanup(char *input)
 	return (result);
 }
 
-void		ft_inputscan(char *input, t_list **envhead, t_list **lsthead)
+void	ft_inputscan(char *input, t_list **envhead, t_list **lsthead)
 {
 	char	**matrix;
-	
+
 	if (!input)
 		return ;
 	ft_insertspace(&input);

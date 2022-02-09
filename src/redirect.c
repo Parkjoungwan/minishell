@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 11:57:36 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/09 11:50:19 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/09 23:30:49 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	ft_inputcon(t_list **envhead, t_split *cmdinfo)
 
 static int	ft_outputcon(t_list **envhead, t_split *cmdinfo)
 {
-	int fd;
+	int	fd;
 
 	fd = 0;
 	if (cmdinfo->oneo == 1)
@@ -60,7 +60,7 @@ static int	ft_outputcon(t_list **envhead, t_split *cmdinfo)
 
 int	ft_close_redirect(t_split *cmdinfo)
 {
-	int err;
+	int	err;
 
 	err = 0;
 	if (cmdinfo->fdin > 0)
@@ -81,7 +81,7 @@ int	ft_close_redirect(t_split *cmdinfo)
 	return (err);
 }
 
-int			ft_redirect(t_list **envhead, t_split *cmdinfo)
+int	ft_redirect(t_list **envhead, t_split *cmdinfo)
 {
 	int	err;
 

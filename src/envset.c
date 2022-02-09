@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 11:13:45 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/07 10:52:50 by khee-seo         ###   ########.fr       */
+/*   Updated: 2022/02/09 23:15:05 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_envnamelen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (*str && *str != '=')
@@ -71,7 +71,7 @@ int	ft_env_addlist(t_list **envhead, char *env)
 int	ft_getenvnbr(t_list **envhead)
 {
 	int		i;
-	t_list *tmp;
+	t_list	*tmp;
 
 	tmp = *envhead;
 	i = 0;

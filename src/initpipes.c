@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 11:22:54 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/07 10:41:02 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/09 23:25:36 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ static int	ft_pipecheck(int i, int *fd, int size)
 	return (0);
 }
 
-int			ft_initpipes(t_list **lsthead)
+int	ft_initpipes(t_list **lsthead)
 {
 	int		size;
 	int		i;
 	int		*fd;
 	t_split	*cmdinfo;
 	t_list	*run;
-	
+
 	size = ft_lstsize(*lsthead);
 	fd = ft_calloc((size - 1) * 2, sizeof(int));
 	if (!fd)

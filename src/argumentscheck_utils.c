@@ -6,13 +6,13 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 11:06:52 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/08 10:48:44 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/09 23:07:08 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static int ft_set_input(t_split *cmdinfo, int i, int flag)
+static int	ft_set_input(t_split *cmdinfo, int i, int flag)
 {
 	if (!cmdinfo->tokens[i + 1])
 		return (-666);
@@ -44,7 +44,6 @@ static int	ft_set_output(t_split *cmdinfo, int i, int flag)
 	cmdinfo->tokens[i] = NULL;
 	cmdinfo->tokens[i + 1] = NULL;
 	return (i);
-
 }
 
 int	ft_checktoken_input(t_split *cmdinfo, int i)

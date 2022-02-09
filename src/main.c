@@ -6,13 +6,14 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 10:07:15 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/08 12:54:42 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/09 23:27:31 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	ft_init_shell(t_list **envhead, t_list **lsthead, char *input, char *prom)
+void	ft_init_shell(t_list **envhead, t_list **lsthead,
+		char *input, char *prom)
 {
 	while (1)
 	{
@@ -28,7 +29,7 @@ void	ft_init_shell(t_list **envhead, t_list **lsthead, char *input, char *prom)
 		if (!ft_strlen(input))
 		{
 			free(input);
-			continue;
+			continue ;
 		}
 		add_history(input);
 		ft_inputscan(input, envhead, lsthead);

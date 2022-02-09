@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:29:45 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/06 12:36:39 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/09 23:14:00 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char	*ft_skipspace(char *str)
 	return (str);
 }
 
-static char *ft_findnext(char *str, char c)
+static char	*ft_findnext(char *str, char c)
 {
 	while (*str && *str != c)
 		str++;
@@ -72,8 +72,7 @@ char	**ft_cutbytokens(char *input, t_list **envhead)
 {
 	char	**matrix;
 
-	//메모리 누수 나는 부분
-	matrix = ft_calloc(ft_strlen(input) + 1, sizeof(char *)); //' '를 기준으로 나중에 편집
+	matrix = ft_calloc(ft_strlen(input) + 1, sizeof(char *));
 	if (!matrix)
 		return (NULL);
 	ft_fillmatrix(matrix, input, input, 0);

@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 10:15:34 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/07 11:02:56 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/09 23:14:35 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static void	restores_stdin_and_closes(void)
 	close(tmp_fd);
 }
 
-void		ft_doc_input(t_list **envhead, t_split *cmdinfo)
+void	ft_doc_input(t_list **envhead, t_split *cmdinfo)
 {
 	int	tmp_fd;
 	int	pid;

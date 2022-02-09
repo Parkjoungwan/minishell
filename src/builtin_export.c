@@ -6,13 +6,13 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 00:58:06 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/07 11:44:44 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/09 23:31:28 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static int ft_hasequal(char *str)
+static int	ft_hasequal(char *str)
 {
 	if (str && ((ft_strlen(str) < 3) || !ft_isalpha(*str)))
 		return (0);
@@ -31,7 +31,7 @@ static void	ft_print_export(t_list **envhead)
 {
 	t_env	**ptr;
 	int		i;
-	
+
 	i = 0;
 	ptr = ft_envsort(envhead);
 	while (ptr && ptr[i])
@@ -56,7 +56,7 @@ static char	*ft_trimmer(char *old)
 	else if (old[0] == '\'')
 		new = ft_strtrim(old, "\'");
 	else
-		return(old);
+		return (old);
 	free(old);
 	return (new);
 }

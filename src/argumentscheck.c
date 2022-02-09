@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 10:32:17 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/07 11:03:53 by khee-seo         ###   ########.fr       */
+/*   Updated: 2022/02/09 23:06:36 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	ft_sortting(char **tokens, int size)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < size)
@@ -57,7 +57,7 @@ static void	ft_synerror(t_list **lsthead)
 
 static int	ft_getsize(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -65,7 +65,7 @@ static int	ft_getsize(char **str)
 	return (i);
 }
 
-int		ft_argumentscheck(t_list **lsthead, int i, int size)
+int	ft_argumentscheck(t_list **lsthead, int i, int size)
 {
 	t_list	*lst;
 	t_split	*cmdinfo;

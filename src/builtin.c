@@ -6,13 +6,13 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 12:20:13 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/08 11:05:44 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/09 23:09:02 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static int fork_or_not(t_split *cmdinfo, int len)
+static int	fork_or_not(t_split *cmdinfo, int len)
 {
 	if (!cmdinfo->piped)
 		return (0);
@@ -34,8 +34,8 @@ static int fork_or_not(t_split *cmdinfo, int len)
 
 static void	built_pipe(t_split *cmdinfo)
 {
-	int in;
-	
+	int	in;
+
 	cmdinfo->pcpyin = dup(STDIN_FILENO);
 	cmdinfo->pcpyout = dup(STDOUT_FILENO);
 	in = cmdinfo->pipenbr * 2;
@@ -53,7 +53,8 @@ static void	destory_pipe(t_split *cmdinfo)
 	close(cmdinfo->pcpyout);
 }
 
-static int	run_builtin(t_split *cmdinfo, t_list **envhead, int len, t_list **lsthead)
+static int	run_builtin(t_split *cmdinfo, t_list **envhead
+		, int len, t_list **lsthead)
 {
 	if (len > 3 && !cmdinfo->piped && !strncmp(cmdinfo->tokens[0], "exit", len))
 		ft_exit_cmd(envhead, lsthead, cmdinfo);

@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 10:23:45 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/07 11:00:35 by khee-seo         ###   ########.fr       */
+/*   Updated: 2022/02/09 23:27:10 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ static int	ft_isoperator(char *str)
 	}
 	return (0);
 }
-static char *ft_makenewline(char *line, char *curr, int operator_size, int offset)
+
+static char	*ft_makenewline(char *line, char *curr,
+		int operator_size, int offset)
 {
 	char	**temp;
 	char	*result;
@@ -77,7 +79,7 @@ static char	*ft_addspace(char **line, char *curr, char *line_init)
 	return (new_line + offset + operator_size + 1);
 }
 
-void		ft_insertspace(char **line)
+void	ft_insertspace(char **line)
 {
 	char	*curr;
 	char	*line_init;

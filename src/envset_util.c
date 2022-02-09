@@ -6,13 +6,13 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 10:33:37 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/08 15:17:28 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/09 23:18:49 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int		ft_isnewlst(t_list **envhead, char *name, char *val)
+int	ft_isnewlst(t_list **envhead, char *name, char *val)
 {
 	t_env	*content;
 
@@ -29,7 +29,7 @@ int		ft_isnewlst(t_list **envhead, char *name, char *val)
 	return (0);
 }
 
-int		ft_putenv(t_list **envhead, char *name, char *val)
+int	ft_putenv(t_list **envhead, char *name, char *val)
 {
 	t_env	*tmp;
 	t_list	*iter;
@@ -39,7 +39,7 @@ int		ft_putenv(t_list **envhead, char *name, char *val)
 	{
 		tmp = (t_env *)(iter->content);
 		if (!ft_strncmp(tmp->name, name, ft_strlen(name) + 1))
-			break;
+			break ;
 		iter = iter->next;
 	}
 	if (iter)

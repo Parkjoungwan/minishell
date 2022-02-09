@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 10:37:31 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/06 11:37:57 by joupark          ###   ########.fr       */
+/*   Updated: 2022/02/09 23:24:52 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static char	*ft_make_pname(char *name, char *path)
 
 static int	ft_check_file(char *name, int flag)
 {
-	struct stat buf;
-	
+	struct stat	buf;
+
 	if (flag)
 		return (flag);
 	if (name && !stat(name, &buf))
@@ -40,9 +40,9 @@ static int	ft_check_file(char *name, int flag)
 
 static char	*ft_check_name(char *name)
 {
-	struct stat buf;
+	struct stat	buf;
 	char		*back;
-	
+
 	if (!ft_strchr(name, '/'))
 		return (NULL);
 	if (stat(name, &buf) < 0)
