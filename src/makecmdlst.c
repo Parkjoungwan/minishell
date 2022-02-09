@@ -6,7 +6,7 @@
 /*   By: joupark <joupark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:12:51 by joupark           #+#    #+#             */
-/*   Updated: 2022/02/07 10:58:56 by khee-seo         ###   ########.fr       */
+/*   Updated: 2022/02/09 16:10:44 by joupark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,19 @@ static int	ft_tokensnum(char **matrix, int i)
 	return (num);
 }
 
+static int	is_fake_redirect(char *str)
+{
+	if (!(ft_strncmp(str, "\">>\"", 4)) || !(ft_strncmp(str, "\"<<\"", 4)))
+		return (1);
+	if (!(ft_strncmp(str, "\">\"", 3)) || !(ft_strncmp(str, "\"<\"", 3)))
+		return (1);
+	if (!(ft_strncmp(str, "\'>>\'", 4)) || !(ft_strncmp(str, "\'<<\'", 4)))
+		return (1);
+	if (!(ft_strncmp(str, "\'>\'", 3)) || !(ft_strncmp(str, "\'<\'", 3)))
+		return (1);
+	return (0);
+}
+
 static void	ft_cpytokens(char **matrix, char **tokens, int i, int num)
 {
 	int j;
@@ -38,9 +51,17 @@ static void	ft_cpytokens(char **matrix, char **tokens, int i, int num)
 	while (j < num && matrix[i + j])
 	{
 		if (matrix[i + j][0] == '\"')
+		{
 			tokens[j] = ft_strtrim(matrix[i + j], "\"");
+			if(is_fake_redirect(matrix[i + j]))
+				tokens[j] = ft_strjoin(tokens[j], "+-+");
+		}
 		else
+		{
 			tokens[j] = ft_strtrim(matrix[i + j], "\'");
+			if(is_fake_redirect(matrix[i + j]))
+				tokens[j] = ft_strjoin(tokens[j], "+-+");
+		}
 		free(matrix[i + j]);
 		j++;
 	}
