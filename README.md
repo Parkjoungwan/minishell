@@ -31,5 +31,4 @@ sudo apt-get install libreadline-dev
 ```
 
 # 실행예시
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9903a7e1-f7e1-4341-bf82-1a650e9f4d91/Untitled.png)
+![image](https://user-images.githubusercontent.com/48785968/214744135-8eecf7f6-cfb8-469c-9dd6-d7eb7cb35dbc.png)
